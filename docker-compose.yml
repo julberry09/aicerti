@@ -1,0 +1,39 @@
+version: "3.9"
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    env_file:
+      - .env
+    environment:
+      # You can still override any envs here or via CI/CD secrets
+      - AOAI_ENDPOINT=${AOAI_ENDPOINT}
+      - AOAI_API_KEY=${AOAI_API_KEY}
+      - AOAI_API_VERSION=${AOAI_API_VERSION}
+      - AOAI_DEPLOY_GPT4O_MINI=${AOAI_DEPLOY_GPT4O_MINI}
+      - AOAI_DEPLOY_GPT4O=${AOAI_DEPLOY_GPT4O}
+      - AOAI_DEPLOY_EMBED_3_LARGE=${AOAI_DEPLOY_EMBED_3_LARGE}
+      - AOAI_DEPLOY_EMBED_3_SMALL=${AOAI_DEPLOY_EMBED_3_SMALL}
+      - AOAI_DEPLOY_EMBED_ADA=${AOAI_DEPLOY_EMBED_ADA}
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    volumes:
+      - ./kb:/app/kb
+      - ./index:/app/index
+
+  ui:
+    build:
+      context: .
+      dockerfile: Dockerfile.ui
+    depends_on:
+      - api
+    env_file:
+      - .env
+    ports:
+      - "8501:8501"
+    restart: unless-stopped
+    volumes:
+      - ./kb:/app/kb
+      - ./index:/app/index
