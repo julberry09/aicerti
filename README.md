@@ -67,8 +67,8 @@ pytest>=8.2.0
 ## 🔑 환경 변수 설정 - Azure OpenAI 리소스 생성등 (.env 또는 시스템 환경변수)
 
 ```bash
-AOAI_ENDPOINT=https://123
-AOAI_API_KEY=123
+AOAI_ENDPOINT=https://your-aoai-endpoint.openai.azure.com/
+AOAI_API_KEY=your-aoai-api-key
 AOAI_API_VERSION=2024-10-21
 
 AOAI_DEPLOY_GPT4O_MINI=gpt-4o-mini
@@ -86,8 +86,8 @@ AOAI_DEPLOY_EMBED_ADA=text-embedding-ada-002
 ### 실습 기본 설치
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate   # Windows: .venv\Scripts\activate
+#python -m venv .venv
+#source .venv/bin/activate   # Windows: .venv\Scripts\activate
 cd 63
 pip install -r requirements.txt
 ```

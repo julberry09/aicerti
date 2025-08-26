@@ -1,23 +1,25 @@
-# Core app
-streamlit>=1.37.0
-fastapi>=0.110.0
-uvicorn[standard]>=0.30.0
-httpx>=0.27.0
+# Core
 python-dotenv>=1.0.1
-pydantic>=2.8.2
+fastapi>=0.111.0
+uvicorn[standard]>=0.30.0
+streamlit>=1.36.0
+httpx>=0.27.0
+requests>=2.32.0
+pydantic>=2.6.0
 
-# LLMs / RAG
-langchain>=0.2.14
-langchain-community>=0.2.12
-langchain-openai>=0.1.22
-langgraph>=0.2.33
-faiss-cpu>=1.8.0.post1
-tiktoken>=0.7.0
+# LangChain stack
+langchain>=0.2.0
+langchain-community>=0.2.0
+langchain-openai>=0.1.8
+langgraph>=0.2.14
+faiss-cpu>=1.8.0
 
 # Loaders
 pypdf>=4.2.0
-docx2txt>=0.8
-pandas>=2.2.2
+python-docx>=1.1.0
 
-# Tests
+# Test
 pytest>=8.2.0
+
+# (충돌 회피) numpy는 2.x를 쓰지 말고 1.26 계열로 고정
+numpy>=1.26.4,<2.0.0
